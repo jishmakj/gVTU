@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <style>
+ body {
+  padding-top: 51px;  
+}
+.text-center {
+  padding-top: 20px;
+}
+.col-xs-12 {
+  background-color: #fff;
+}
+#sidebar {
+  height: 100%;
+  padding-right: 0;
+  padding-top: 20px;
+}
+#sidebar .nav {
+  width: 95%;
+}
+#sidebar li {
+  border:0 #f2f2f2 solid;
+  border-bottom-width:1px;
+}
+
+/* collapsed sidebar styles */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -41.6%;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -41.6%;
+  }
+  .row-offcanvas-right.active {
+    right: 41.6%;
+  }
+  .row-offcanvas-left.active {
+    left: 41.6%;
+  }
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 41.6%;
+  }
+  #sidebar {
+    padding-top:0;
+  }
+}
+
+
+ 
+  </style>
+</head>
+<body>
+<div class="page-container">
+  
+	<!-- top navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+       <div class="container">
+    	<div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#">GPS Vehicle Tracking System</a>
+    	</div>
+       </div>
+    </div>
+      
+    <div class="container">
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+        <!-- sidebar -->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav">
+              <li id="l1" class="active"><a href="#">Home</a></li>
+              <li id="l2"><a href="#">Display Map</a></li>
+              <li id="l3"><a href="#">Vehicle details</a></li>
+              <li id="l4"><a href="#">Speed</a></li>
+	     
+              <li id="l5"><a href="#">Settings</a></li>  
+		<li id="l6"><a href="#">Help</a></li>               
+            </ul>
+        </div>
+  	
+        <!-- main area -->
+        <div class="col-xs-12 col-sm-9">
+
+		<div class="container-fluid">
+			<div class="row">
+			<div class="contentbox" id="div1">
+				<h1>Welcome Note</h1>
+			</div>
+			<div class="contentbox" id="div2">
+				<h1>Map</h1>
+			</div>
+			<div class="contentbox" id="div3">
+				<h3>Vehicle details</h3>
+				<div class="col-sm-4">
+				<div class="form-group">
+					<label>Choose Vehicle</label><select id="vehicle" class="form-control inp-sm" onchange="getVehicleDet()">
+					<option>Choose Vehicle</option>
+					</select>
+					
+
+					</div>
+
+					
+
+
+				</div>
+
+						<div class="w3-card-8" style="width:100%">
+						<header class="w3-container w3-light-grey"><label>Vehicle Name:</label><div id="det1"></div></header>
+						<div class="w3-container">
+							<label>Vehicle Id</label><div id="det2"></div>
+							<label>Reg.No</label><div id="det3"></div>
+							<label>Person:</label><div id="det4"></div>
+						</div>
+
+			</div>
+			<div class="contentbox" id="div4">
+				<h1>Speed</h1>
+			</div>
+			<div class="contentbox" id="div5">
+				<h1>Settings</h1>
+			</div>
+			<div class="contentbox" id="div6">
+				<h1>Help</h1>
+			</div>
+			
+			</div>
+			
+		</div>
+
+          
+        </div><!-- /.col-xs-12 main -->
+    </div><!--/.row-->
+  </div><!--/.container-->
+</div><!--/.page-container-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+getvehicles();
+	$("#div1").show();
+$("#div2").hide();
+$("#div3").hide();
+$("#div4").hide();
+$("#div5").hide();
+$("#div6").hide();
+
+  $("#l1").click(function(e) {
+
+	$("#div1").show();
+$("#div2").hide();
+$("#div3").hide();
+$("#div4").hide();
+$("#div5").hide();
+$("#div6").hide();
+	
+  });
+
+ $("#l2").click(function(e) {
+
+	$("#div2").show();
+$("#div1").hide();
+$("#div3").hide();
+$("#div4").hide();
+$("#div5").hide();
+$("#div6").hide();
+	
+  });
+ $("#l3").click(function(e) {
+
+	$("#div3").show();
+$("#div2").hide();
+$("#div1").hide();
+$("#div4").hide();
+$("#div5").hide();
+$("#div6").hide();
+	
+  });
+ $("#l4").click(function(e) {
+
+	$("#div4").show();
+$("#div2").hide();
+$("#div3").hide();
+$("#div1").hide();
+$("#div5").hide();
+$("#div6").hide();
+	
+  });
+ $("#l5").click(function(e) {
+
+	$("#div5").show();
+$("#div2").hide();
+$("#div3").hide();
+$("#div4").hide();
+$("#div1").hide();
+$("#div6").hide();
+	
+  });
+ $("#l6").click(function(e) {
+
+	$("#div6").show();
+$("#div2").hide();
+$("#div3").hide();
+$("#div4").hide();
+$("#div5").hide();
+$("#div1").hide();
+	
+  });
+
+
+
+
+
+});
+function getVehicleDet()
+{
+
+	var vehicle_id=$("#vehicle").val();
+
+	var myKeyVals = { 'vehicleId': vehicle_id};	
+	
+	 $.ajax({
+
+        url: "/gps/getVehicleDet.php",
+
+        type: "post",
+
+        dataType: "json",
+	
+	data: myKeyVals,
+
+        success: function (response) {
+	
+	$("#det1").text(response[0].VehicleName);
+	$("#det2").text(response[0].VehicleId);
+	$("#det3").text(response[0].RegNo);
+	$("#det4").text(response[0].UserName);
+
+
+		
+	console.log(response[0].VehicleName);
+
+	},
+
+        error: function(jqXHR, textStatus, errorThrown) {
+
+
+           console.log(textStatus, errorThrown);
+
+        }
+
+         });
+	
+	
+}
+
+
+
+function getvehicles()
+{
+    
+    $.ajax({
+
+        url: "/gps/getVehicles.php",
+
+        type: "get",
+
+        dataType: "json",
+
+        success: function (response) {
+		
+	
+
+	 $.each(response, function(key, value) {
+		 $('#vehicle').append('<option value=' + value.id + '>' + value.VehicleName + '</option>');
+          
+        });
+
+	},
+
+        error: function(jqXHR, textStatus, errorThrown) {
+
+
+           console.log(textStatus, errorThrown);
+
+        }
+
+         });
+
+
+
+
+}
+</script>
+</body>
+</html>
+
+

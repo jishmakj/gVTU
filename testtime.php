@@ -1,0 +1,18 @@
+<html>
+<head>
+<script src="https://roads.googleapis.com/v1/snapToRoads?parameters&key=AIzaSyBUOsBnjxAtNmUXCdfusUQ2SrcetpJdPvI"></script>
+
+<script src="moment.js"></script>
+<script>
+var now  = "04/09/2013 15:00:00";
+var then = "04/09/2013 14:20:30";
+
+var tm=moment.utc(moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss"))).format("HH:mm:ss")
+console.log(tm);
+// outputs: "00:39:30"
+</script>>
+</head>
+<body>
+<?php echo "haiii";?>
+</body>
+</html>
